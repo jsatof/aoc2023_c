@@ -1,13 +1,11 @@
-set(WAVESCAPE_TEST_SOURCES
-    test.cpp)
+set(AOC2023_DAY1_TEST_SOURCES
+    day1_test.c)
 
-add_executable(wavescape_test ${WAVESCAPE_TEST_SOURCES})
-target_include_directories(wavescape_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src
-    ${PROJECT_SOURCE_DIR}/microui/src
-    ${PROJECT_SOURCE_DIR}/miniaudio)
+add_executable(aoc2023_day1_test ${AOC2023_DAY1_TEST_SOURCES} ${PROJECT_SOURCE_DIR}/src/day01.c ${PROJECT_SOURCE_DIR}/src/day01.h)
+target_include_directories(aoc2023_day1_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src)
 
-target_link_directories(wavescape_test PRIVATE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
-target_link_libraries(wavescape_test PRIVATE wavescape_shared fmt::fmt boost_unit_test_framework) # boost isnt properly checked on system
+target_link_directories(aoc2023_day1_test PRIVATE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+target_link_libraries(aoc2023_day1_test PRIVATE aoc2023_shared criterion)
 
-add_custom_target(test COMMAND wavescape_test)
+add_custom_target(test COMMAND aoc2023_day1_test)

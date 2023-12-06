@@ -32,7 +32,7 @@ find_program(CLANG_FORMAT NAMES "clang-format")
 set(CLANG_FORMAT_COMMAND "${CLANG_FORMAT}") # default is `--style=file`, where it looks for `.clang-format` in parent dir
 
 add_subdirectory(src)
-if (UNIT_TESTS EQUAL ON)
+if (UNIT_TESTS)
     add_subdirectory(test)
 endif()
 

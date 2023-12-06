@@ -7,22 +7,13 @@ set(AOC2023_SOURCES
     day01.h
 )
 
-#add_library(microui_shared SHARED
-#    ${PROJECT_SOURCE_DIR}/microui/src/microui.c
-#    ${PROJECT_SOURCE_DIR}/microui/src/microui.h)
-#install(TARGETS microui_shared LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
-
 add_executable(${PROJECT_NAME} ${AOC2023_SOURCES})
-
-#target_link_libraries(${PROJECT_NAME} PRIVATE)
-    #${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libmicroui_shared.so)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
-if (UNIT_TESTS EQUAL ON)
-	set(${PROJECT_NAME}_shared)
-    add_library(${PROJECT_NAME}_shared SHARED ${AOC2023_SOURCES})
-    target_include_directories(${PROJECT_NAME}_shared PRIVATE ${PROJECT_SOURCE_DIR}/miniaudio)
+if (UNIT_TESTS)
+    add_library(${PROJECT_NAME}_shared SHARED day01.c day01.h)
+    #target_include_directories(${PROJECT_NAME}_shared PRIVATE ${PROJECT_SOURCE_DIR}/miniaudio)
     install(TARGETS ${PROJECT_NAME}_shared LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 endif()
 

@@ -22,3 +22,8 @@ build:
     - cmake -G Ninja ..
     - ninja
 
+test:
+  stage: test
+  script:
+    - ninja test
+

@@ -11,11 +11,8 @@ add_executable(${PROJECT_NAME} ${AOC2023_SOURCES})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
-if (UNIT_TESTS)
-    add_library(${PROJECT_NAME}_shared SHARED day01.c day01.h)
-    #target_include_directories(${PROJECT_NAME}_shared PRIVATE ${PROJECT_SOURCE_DIR}/miniaudio)
-    install(TARGETS ${PROJECT_NAME}_shared LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
-endif()
+add_library(${PROJECT_NAME}_shared SHARED day01.c day01.h)
+install(TARGETS ${PROJECT_NAME}_shared LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # Prepend the full path to each source file
 # Create custom target for running clang tidy

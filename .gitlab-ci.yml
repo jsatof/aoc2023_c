@@ -24,6 +24,11 @@ build:
 
 test:
   stage: test
+  before_script:
+    - apt-get update
+    - apt-get -y install libcriterion-dev ninja-build cmake
   script:
+    - mkdir build/ && cd build/
+    - cmake -G Ninja ..
     - ninja test
 

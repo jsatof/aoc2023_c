@@ -9,9 +9,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
 
-option(UNIT_TESTS ON)
-
-# Finding System Deps
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(CRITERION REQUIRED criterion)
 
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall -Wextra -Werror=deprecated-declarations -fdiagnostics-color=always")
@@ -32,9 +31,7 @@ find_program(CLANG_FORMAT NAMES "clang-format")
 set(CLANG_FORMAT_COMMAND "${CLANG_FORMAT}") # default is `--style=file`, where it looks for `.clang-format` in parent dir
 
 add_subdirectory(src)
-if (UNIT_TESTS)
-    add_subdirectory(test)
-endif()
+add_subdirectory(test)
 
 message("")
 message("========================")
@@ -51,6 +48,6 @@ message("CMAKE_BUILD_TYPE:        ${CMAKE_BUILD_TYPE}")
 message("CMAKE_INSTALL_BINDIR:    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 message("CMAKE_INSTALL_LIBDIR:    ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
 message("CMAKE_INSTALL_ARCHIVE::  ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
-message("TESTING ENABLED:		  ${UNIT_TESTS}")
+message("TESTING ENABLED:         ${UNIT_TESTS}")
 message("")
  

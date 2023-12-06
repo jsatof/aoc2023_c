@@ -12,9 +12,6 @@ set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
 option(UNIT_TESTS ON)
 
 # Finding System Deps
-find_package(fmt REQUIRED)
-find_package(PkgConfig REQUIRED)
-find_package(Boost COMPONENTS unit_test_framework)
 
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall -Wextra -Werror=deprecated-declarations -fdiagnostics-color=always")
